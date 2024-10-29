@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumixfy Landing Page</title>
+  
+  <!-- Tailwind CSS desde CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configuración personalizada de Tailwind CSS -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              light: '#A855F7',
+              DEFAULT: '#8B5CF6',
+              dark: '#7C3AED',
+            },
+            secondary: {
+              light: '#EC4899',
+              DEFAULT: '#DB2777',
+              dark: '#BE185D',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  
+  <style>
+    /* Estilos para el modal */
+    .modal {
+      display: none;
+    }
+    .modal-active {
+      display: flex;
+    }
+    
+    /* Estilos para TwentyTwenty */
+    .twentytwenty-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .twentytwenty-before,
+    .twentytwenty-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .twentytwenty-before {
+      z-index: 20;
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+
+    .twentytwenty-after {
+      z-index: 10;
+    }
+
+    .twentytwenty-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: #fff;
+      transform: translateX(-50%);
+      cursor: ew-resize;
+      z-index: 30;
+    }
+
+    .twentytwenty-handle:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #8B5CF6;
+      border: 3px solid #fff;
+      transform: translate(-50%, -50%);
+      cursor: ew-resize;
+      box-shadow: 0 0 12px rgba(51, 51, 51, 0.5);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 dark:from-gray-900 dark:to-purple-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
+
+  <!-- Header -->
+  <header class="container mx-auto px-4 py-6 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <!-- Icono Sparkles -->
+      <svg class="h-8 w-8 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <!-- SVG del icono -->
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 9l.867 1.793a1 1 0 00.763.607l1.99.291-1.44 1.404a1 1 0 00-.287.884l.341 1.98-1.777-.935a1 1 0 00-.931 0l-1.777.935.341-1.98a1 1 0 00-.287-.884L2.38 11.69l1.99-.291a1 1 0 00.763-.607L5 9z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l.867 1.793a1 1 0 00.763.607l1.99.291-1.44 1.404a1 1 0 00-.287.884l.341 1.98-1.777-.935a1 1 0 00-.931 0l-1.777.935.341-1.98a1 1 0 00-.287-.884l-1.44-1.404 1.99-.291a1 1 0 00.763-.607L19 9z" />
+      </svg>
+      <a href="#" class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Lumixfy</a>
+    </div>
+    <nav>
+      <ul class="flex items-center space-x-4">
+        <li><button id="lang-es" class="text-sm font-medium focus:outline-none">ES</button></li>
+        <li><button id="lang-en" class="text-sm font-medium focus:outline-none">EN</button></li>
+        <!-- Interruptor de Tema -->
+        <li>
+          <button id="theme-toggle" aria-label="Cambiar Tema" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none">
+            <svg id="theme-icon" class="h-5 w-5 text-gray-800 dark:text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <!-- Icono predeterminado (sol) -->
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 5a7 7 0 000 14 7 7 0 000-14z" />
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="container mx-auto px-4 py-12 space-y-24">
+
+    <!-- Sección Hero -->
+    <section class="text-center space-y-6">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Transforma tus Imágenes con Iluminación Profesional y Fondos Personalizados en Segundos" data-lang-en="Transform Your Images with Professional Lighting and Custom Backgrounds in Seconds">
+        Transforma tus Imágenes con Iluminación Profesional y Fondos Personalizados en Segundos
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-es="Lumixfy utiliza inteligencia artificial avanzada para cambiar automáticamente la iluminación y el fondo de tus fotos, garantizando resultados realistas y de alta calidad." data-lang-en="Lumixfy uses advanced artificial intelligence to automatically change the lighting and background of your photos, ensuring realistic and high-quality results.">
+        Lumixfy utiliza inteligencia artificial avanzada para cambiar automáticamente la iluminación y el fondo de tus fotos, garantizando resultados realistas y de alta calidad.
+      </p>
+      <div class="flex justify-center flex-wrap gap-4">
+        <button class="openModal bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Regístrate Gratis Ahora" data-lang-en="Register for Free Now">
+          Regístrate Gratis Ahora
+        </button>
+        <button class="openModal bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Pre-registrate Ahora" data-lang-en="Pre-register Now">
+          Pre-registrate Ahora
+        </button>
+      </div>
+      <div class="mt-12 relative">
+        <!-- Sección de Antes y Después -->
+        <div class="twentytwenty-container aspect-square max-w-3xl mx-auto">
+          <img src="despues.webp" alt="Después de usar Lumixfy" class="w-full h-full object-cover" />
+          <img src="antes.webp" alt="Antes de usar Lumixfy" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Características -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="¿Por Qué Elegir Lumixfy?" data-lang-en="Why Choose Lumixfy?">
+        ¿Por Qué Elegir Lumixfy?
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Característica 1 -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 flex items-start space-x-4">
+            <!-- Icono Cámara -->
+            <svg class="h-8 w-8 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <!-- SVG del icono Cámara -->
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l3-3h12l3 3v11a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+            <div>
+              <h3 class="text-xl font-semibold mb-2" data-lang-es="Automatización Inteligente" data-lang-en="Intelligent Automation">Automatización Inteligente</h3>
+              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Ahorra tiempo y esfuerzo con nuestra IA que ajusta automáticamente la iluminación y cambia el fondo de tus fotos." data-lang-en="Save time and effort with our AI that automatically adjusts lighting and changes the background of your photos.">
+                Ahorra tiempo y esfuerzo con nuestra IA que ajusta automáticamente la iluminación y cambia el fondo de tus fotos.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Característica 2 -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 flex items-start space-x-4">
+            <!-- Icono Pincel -->
+            <svg class="h-8 w-8 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <!-- SVG del icono Pincel -->
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553 4.553a3.25 3.25 0 01-4.596 4.596L10 15m5-5l-5 5" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h.01" />
+            </svg>
+            <div>
+              <h3 class="text-xl font-semibold mb-2" data-lang-es="Calidad Profesional" data-lang-en="Professional Quality">Calidad Profesional</h3>
+              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Obtén imágenes de alta calidad que mantienen la integridad fotográfica, ideales para cualquier propósito." data-lang-en="Get high-quality images that maintain photographic integrity, ideal for any purpose.">
+                Obtén imágenes de alta calidad que mantienen la integridad fotográfica, ideales para cualquier propósito.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Característica 3 -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 flex items-start space-x-4">
+            <!-- Icono Varita Mágica -->
+            <svg class="h-8 w-8 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <!-- SVG del icono Varita Mágica -->
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 16M9 4l7 7-7 7" />
+            </svg>
+            <div>
+              <h3 class="text-xl font-semibold mb-2" data-lang-es="Flexibilidad Total" data-lang-en="Total Flexibility">Flexibilidad Total</h3>
+              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Personaliza tus imágenes eligiendo entre fondos generados automáticamente o subiendo los tuyos propios." data-lang-en="Customize your images by choosing from automatically generated backgrounds or uploading your own.">
+                Personaliza tus imágenes eligiendo entre fondos generados automáticamente o subiendo los tuyos propios.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Característica 4 -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 flex items-start space-x-4">
+            <!-- Icono Capas -->
+            <svg class="h-8 w-8 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <!-- SVG del icono Capas -->
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12l8-4-8-4-8 4 8 4z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12l8 4 8-4" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l8 4 8-4" />
+            </svg>
+            <div>
+              <h3 class="text-xl font-semibold mb-2" data-lang-es="Asequible y Accesible" data-lang-en="Affordable and Accessible">Asequible y Accesible</h3>
+              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Empieza gratis con 5 imágenes y accede a planes premium por solo $10 USD al mes para necesidades más extensas." data-lang-en="Start free with 5 images and access premium plans for only $10 USD per month for more extensive needs.">
+                Empieza gratis con 5 imágenes y accede a planes premium por solo $10 USD al mes para necesidades más extensas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Características Destacadas -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 opacity-50"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Características Destacadas de Lumixfy" data-lang-en="Highlighted Features of Lumixfy">
+          Características Destacadas de Lumixfy
+        </h2>
+        <div class="space-y-6">
+          <div class="flex items-start space-x-4">
+            <div class="bg-gradient-to-r from-primary to-secondary rounded-full p-2">
+              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <!-- SVG del icono ChevronRight -->
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+            <p class="flex-1 text-lg" data-lang-es="Describe el tipo de iluminación que deseas, como 'luz de día' o 'ambiente nocturno', y nuestra IA ajusta automáticamente el brillo y el estilo de iluminación." data-lang-en="Describe the type of lighting you want, such as 'daylight' or 'nighttime ambiance', and our AI automatically adjusts the brightness and lighting style.">
+              Describe el tipo de iluminación que deseas, como "luz de día" o "ambiente nocturno", y nuestra IA ajusta automáticamente el brillo y el estilo de iluminación.
+            </p>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="bg-gradient-to-r from-primary to-secondary rounded-full p-2">
+              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <!-- SVG del icono ChevronRight -->
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+            <p class="flex-1 text-lg" data-lang-es="Genera fondos personalizados automáticamente que armonizan con tu imagen principal, creando composiciones realistas y atractivas." data-lang-en="Automatically generate custom backgrounds that harmonize with your main image, creating realistic and attractive compositions.">
+              Genera fondos personalizados automáticamente que armonizan con tu imagen principal, creando composiciones realistas y atractivas.
+            </p>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="bg-gradient-to-r from-primary to-secondary rounded-full p-2">
+              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <!-- SVG del icono ChevronRight -->
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+            <p class="flex-1 text-lg" data-lang-es="Sube tu propio fondo y deja que Lumixfy adapte la iluminación y la imagen principal para una integración perfecta." data-lang-en="Upload your own background and let Lumixfy adapt the lighting and main image for a seamless integration.">
+              Sube tu propio fondo y deja que Lumixfy adapte la iluminación y la imagen principal para una integración perfecta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Cómo Usar -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Así de Fácil es Usar Lumixfy" data-lang-en="How Easy It Is to Use Lumixfy">
+        Así de Fácil es Usar Lumixfy
+      </h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <!-- Paso 1 -->
+        <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">1.</span>
+          <span class="text-lg" data-lang-es="Sube tu Imagen" data-lang-en="Upload Your Image">Sube tu Imagen</span>
+        </div>
+        <!-- Paso 2 -->
+        <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">2.</span>
+          <span class="text-lg" data-lang-es="Elige tu Fondo" data-lang-en="Choose Your Background">Elige tu Fondo</span>
+        </div>
+        <!-- Paso 3 -->
+        <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">3.</span>
+          <span class="text-lg" data-lang-es="Ajusta la Iluminación" data-lang-en="Adjust the Lighting">Ajusta la Iluminación</span>
+        </div>
+        <!-- Paso 4 -->
+        <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">4.</span>
+          <span class="text-lg" data-lang-es="Obtén tu Imagen Transformada" data-lang-en="Get Your Transformed Image">Obtén tu Imagen Transformada</span>
+        </div>
+        <!-- Paso 5 -->
+        <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">5.</span>
+          <span class="text-lg" data-lang-es="Guarda y Comparte" data-lang-en="Save and Share">Guarda y Comparte</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Usos Principales -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Principales Usos de Lumixfy" data-lang-en="Main Uses of Lumixfy">
+        Principales Usos de Lumixfy
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Uso 1 -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-lg font-semibold" data-lang-es="Fotografía Personal" data-lang-en="Personal Photography">Fotografía Personal</span>
+        </div>
+        <!-- Uso 2 -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-lg font-semibold" data-lang-es="Comercio Electrónico" data-lang-en="E-Commerce">Comercio Electrónico</span>
+        </div>
+        <!-- Uso 3 -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-lg font-semibold" data-lang-es="Marketing y Publicidad" data-lang-en="Marketing and Advertising">Marketing y Publicidad</span>
+        </div>
+        <!-- Uso 4 -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-lg font-semibold" data-lang-es="Creación de Contenido" data-lang-en="Content Creation">Creación de Contenido</span>
+        </div>
+        <!-- Uso 5 -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-lg font-semibold" data-lang-es="Diseño Gráfico" data-lang-en="Graphic Design">Diseño Gráfico</span>
+        </div>
+        <!-- Uso 6 -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg transform transition-transform hover:scale-105">
+          <span class="text-lg font-semibold" data-lang-es="Agencias de Fotografía" data-lang-en="Photography Agencies">Agencias de Fotografía</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Lo Que Dicen Nuestros Usuarios" data-lang-en="What Our Users Say">
+        Lo Que Dicen Nuestros Usuarios
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Testimonio 1 -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 space-y-4">
+            <p class="italic text-lg" data-lang-es="“Lumixfy ha revolucionado la manera en que presento mis productos en línea. Las imágenes lucen profesionales y realmente atraen a más clientes.”" data-lang-en="“Lumixfy has revolutionized the way I present my products online. The images look professional and truly attract more customers.”">
+              “Lumixfy ha revolucionado la manera en que presento mis productos en línea. Las imágenes lucen profesionales y realmente atraen a más clientes.”
+            </p>
+            <p class="font-semibold text-right text-primary dark:text-secondary" data-lang-es="- María G. – Emprendedora" data-lang-en="- María G. – Entrepreneur">
+              - María G. – Emprendedora
+            </p>
+          </div>
+        </div>
+        <!-- Testimonio 2 -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 space-y-4">
+            <p class="italic text-lg" data-lang-es="“La automatización de Lumixfy me ahorra horas de trabajo en edición. Los resultados son impresionantes y consistentes.”" data-lang-en="“Lumixfy's automation saves me hours of editing work. The results are impressive and consistent.”">
+              “La automatización de Lumixfy me ahorra horas de trabajo en edición. Los resultados son impresionantes y consistentes.”
+            </p>
+            <p class="font-semibold text-right text-primary dark:text-secondary" data-lang-es="- Carlos M. – Fotógrafo Profesional" data-lang-en="- Carlos M. – Professional Photographer">
+              - Carlos M. – Fotógrafo Profesional
+            </p>
+          </div>
+        </div>
+        <!-- Testimonio 3 -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 space-y-4">
+            <p class="italic text-lg" data-lang-es="“Puedo crear contenido visual atractivo para mis redes sociales en minutos. Lumixfy es una herramienta indispensable para mi trabajo diario.”" data-lang-en="“I can create attractive visual content for my social media in minutes. Lumixfy is an indispensable tool for my daily work.”">
+              “Puedo crear contenido visual atractivo para mis redes sociales en minutos. Lumixfy es una herramienta indispensable para mi trabajo diario.”
+            </p>
+            <p class="font-semibold text-right text-primary dark:text-secondary" data-lang-es="- Ana L. – Creadora de Contenido" data-lang-en="- Ana L. – Content Creator">
+              - Ana L. – Creadora de Contenido
+            </p>
+          </div>
+        </div>
+        <!-- Testimonio 4 -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 space-y-4">
+            <p class="italic text-lg" data-lang-es="“Desde que uso Lumixfy, la calidad de las fotos de mis productos ha mejorado significativamente. Mis ventas han aumentado gracias a las mejores imágenes.”" data-lang-en="“Since I started using Lumixfy, the quality of my product photos has significantly improved. My sales have increased thanks to better images.”">
+              “Desde que uso Lumixfy, la calidad de las fotos de mis productos ha mejorado significativamente. Mis ventas han aumentado gracias a las mejores imágenes.”
+            </p>
+            <p class="font-semibold text-right text-primary dark:text-secondary" data-lang-es="- Juan P. – Dueño de Tienda Online" data-lang-en="- Juan P. – Online Store Owner">
+              - Juan P. – Dueño de Tienda Online
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Precios -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Planes de Precios" data-lang-en="Pricing Plans">
+        Planes de Precios
+      </h2>
+      <p class="text-center mb-12 text-lg md:text-xl" data-lang-es="Prueba gratis con 5 imágenes y elige el plan que mejor se adapte a tus necesidades." data-lang-en="Try for free with 5 images and choose the plan that best suits your needs.">
+        Prueba gratis con 5 imágenes y elige el plan que mejor se adapte a tus necesidades.
+      </p>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Plan Gratuito -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div class="p-6 space-y-4">
+            <h3 class="text-2xl font-bold" data-lang-es="Plan Gratuito" data-lang-en="Free Plan">Plan Gratuito</h3>
+            <p class="text-4xl font-bold text-primary dark:text-secondary" data-lang-es="Gratis" data-lang-en="Free">Gratis</p>
+            <ul class="space-y-2">
+              <li class="flex items-center space-x-2">
+                <!-- Icono Check -->
+                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <!-- SVG del icono Check -->
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span data-lang-es="Genera hasta 5 imágenes" data-lang-en="Generate up to 5 images">Genera hasta 5 imágenes</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <!-- SVG del icono Check -->
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span data-lang-es="Acceso a fondos generados automáticamente" data-lang-en="Access to automatically generated backgrounds">Acceso a fondos generados automáticamente</span>
+              </li>
+            </ul>
+            <button class="openModal w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Regístrate Gratis Ahora" data-lang-en="Register for Free Now">
+              Regístrate Gratis Ahora
+            </button>
+          </div>
+        </div>
+        <!-- Plan Premium -->
+        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg border-2 border-primary">
+          <div class="p-6 space-y-4">
+            <h3 class="text-2xl font-bold" data-lang-es="Plan Premium" data-lang-en="Premium Plan">Plan Premium</h3>
+            <p class="text-4xl font-bold text-primary dark:text-secondary" data-lang-es="$10 USD/mes" data-lang-en="$10 USD/month">$10 USD/mes</p>
+            <ul class="space-y-2">
+              <li class="flex items-center space-x-2">
+                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <!-- SVG del icono Check -->
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span data-lang-es="Genera hasta 60 imágenes" data-lang-en="Generate up to 60 images">Genera hasta 60 imágenes</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <!-- SVG del icono Check -->
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span data-lang-es="Acceso a fondos personalizados y generados automáticamente" data-lang-en="Access to custom and automatically generated backgrounds">Acceso a fondos personalizados y generados automáticamente</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <!-- SVG del icono Check -->
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span data-lang-es="Soporte prioritario" data-lang-en="Priority Support">Soporte prioritario</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <!-- SVG del icono Check -->
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span data-lang-es="Actualizaciones y nuevas funcionalidades exclusivas" data-lang-en="Exclusive updates and new features">Actualizaciones y nuevas funcionalidades exclusivas</span>
+              </li>
+            </ul>
+            <button class="openModal w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Regístrate Ahora" data-lang-en="Register Now">
+              Regístrate Ahora
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Final CTA -->
+    <section class="text-center space-y-6 bg-white dark:bg-gray-800 rounded-xl p-12 shadow-2xl relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 opacity-50"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Empieza a Transformar tus Imágenes Hoy Mismo" data-lang-en="Start Transforming Your Images Today">
+          Empieza a Transformar tus Imágenes Hoy Mismo
+        </h2>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-es="Únete a cientos de usuarios satisfechos que ya están mejorando sus imágenes con Lumixfy. Prueba gratis ahora y descubre el poder de la inteligencia artificial en la edición de fotos." data-lang-en="Join hundreds of satisfied users who are already enhancing their images with Lumixfy. Try it for free now and discover the power of artificial intelligence in photo editing.">
+          Únete a cientos de usuarios satisfechos que ya están mejorando sus imágenes con Lumixfy. Prueba gratis ahora y descubre el poder de la inteligencia artificial en la edición de fotos.
+        </p>
+        <div class="flex justify-center flex-wrap gap-4 mt-8">
+          <button class="openModal bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Regístrate Gratis Ahora" data-lang-en="Register for Free Now">
+            Regístrate Gratis Ahora
+          </button>
+          <button class="openModal bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Pre-registrate Ahora" data-lang-en="Pre-register Now">
+            Pre-registrate Ahora
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 dark:bg-gray-900 py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="mb-4">Hecho con 💚 por Jorge Tristan</p>
+      <p>Contacto:</p>
+      <p>Email: <a href="mailto:soporte@lumixfy.com" class="text-primary hover:underline">soporte@lumixfy.com</a></p>
+    </div>
+  </footer>
+
+  <!-- Modal de Pre-Registro -->
+  <div id="preRegisterModal" class="modal fixed inset-0 bg-black bg-opacity-50 justify-center items-center">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-md p-6 relative">
+      <button id="closeModal" class="absolute top-2 right-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white focus:outline-none" aria-label="Cerrar Modal">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <!-- SVG del icono X -->
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h2 class="text-2xl font-bold mb-4 text-center" data-lang-es="Pre-Registro en Lumixfy" data-lang-en="Lumixfy Pre-Registration">Pre-Registro en Lumixfy</h2>
+      <form id="preRegisterForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST" class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium mb-1" data-lang-es="Correo Electrónico" data-lang-en="Email Address">Correo Electrónico</label>
+          <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" data-lang-placeholder-es="Introduce tu correo" data-lang-placeholder-en="Enter your email" placeholder="Introduce tu correo">
+        </div>
+        <div class="text-center">
+          <button type="submit" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Enviar" data-lang-en="Submit">
+            Enviar
+          </button>
+        </div>
+      </form>
+      <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 text-center" data-lang-es="Recibirás una confirmación en tu correo." data-lang-en="You will receive a confirmation in your email.">
+        Recibirás una confirmación en tu correo.
+      </p>
+    </div>
+  </div>
+
+  <!-- jQuery desde CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJ+Y5aPI+obF3dxo6kBLf5o50w6O/Dh5iE+Qo=" crossorigin="anonymous"></script>
+  
+  <!-- jQuery.event.move.js (Local) -->
+  <script src="js/jquery.event.move.js" type="text/javascript"></script>
+  
+  <!-- jQuery.twentytwenty.js (Local) -->
+  <script src="js/jquery.twentytwenty.js" type="text/javascript"></script>
+  
+  <!-- Inicializa los iconos de Lucide y la funcionalidad del modal, tema e idioma -->
+  <script>
+    // Verificar si lucide está definido antes de intentar crear iconos
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    // Funcionalidad del Modal
+    const openModalButtons = document.querySelectorAll('.openModal');
+    const modal = document.getElementById('preRegisterModal');
+    const closeModalButton = document.getElementById('closeModal');
+
+    openModalButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        modal.classList.add('modal-active');
+        // Deshabilitar el scroll de fondo
+        document.body.classList.add('overflow-hidden');
+        // Enfocar el input del modal
+        document.getElementById('email').focus();
+      });
+    });
+
+    closeModalButton.addEventListener('click', () => {
+      modal.classList.remove('modal-active');
+      document.body.classList.remove('overflow-hidden');
+    });
+
+    // Cerrar el modal al hacer clic fuera del contenido
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('modal-active');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+
+    // Funcionalidad del Toggle de Tema
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    // Verificar el tema preferido del usuario
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 5a7 7 0 000 14 7 7 0 000-14z" />';
+    } else {
+      themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 5a7 7 0 000 14 7 7 0 000-14z" />';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 5a7 7 0 000 14 7 7 0 000-14z" />';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 5a7 7 0 000 14 7 7 0 000-14z" />';
+      }
+    });
+
+    // Funcionalidad del Toggle de Idioma
+    const langEsButton = document.getElementById('lang-es');
+    const langEnButton = document.getElementById('lang-en');
+
+    langEsButton.addEventListener('click', () => {
+      setLanguage('es');
+    });
+
+    langEnButton.addEventListener('click', () => {
+      setLanguage('en');
+    });
+
+    function setLanguage(lang) {
+      const elements = document.querySelectorAll('[data-lang-es]');
+
+      elements.forEach(element => {
+        if (lang === 'es') {
+          element.textContent = element.getAttribute('data-lang-es');
+          if (element.placeholder) {
+            element.placeholder = element.getAttribute('data-lang-placeholder-es');
+          }
+        } else if (lang === 'en') {
+          element.textContent = element.getAttribute('data-lang-en');
+          if (element.placeholder) {
+            element.placeholder = element.getAttribute('data-lang-placeholder-en');
+          }
+        }
+      });
+    }
+
+    // Inicializar en español por defecto
+    setLanguage('es');
+
+    // Funcionalidad del Slider de Antes y Después
+    document.addEventListener('DOMContentLoaded', function() {
+        const containers = document.querySelectorAll('.twentytwenty-container');
+        
+        containers.forEach(container => {
+            const beforeImage = container.querySelector('img:first-child');
+            const afterImage = container.querySelector('img:last-child');
+            const handle = document.createElement('div');
+            
+            // Configurar imágenes y contenedor
+            beforeImage.classList.add('twentytwenty-before');
+            afterImage.classList.add('twentytwenty-after');
+            handle.classList.add('twentytwenty-handle');
+            container.appendChild(handle);
+            
+            let isActive = false;
+
+            const beforeAfterSlider = (x) => {
+                let shift = Math.max(0, Math.min(x, container.offsetWidth));
+                let percentage = (shift / container.offsetWidth) * 100;
+                beforeImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+                handle.style.left = `${percentage}%`;
+            }
+
+            const pauseEvents = (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                return false;
+            }
+
+            // Event Listeners
+            container.addEventListener('mousedown', function(e) {
+                isActive = true;
+            });
+
+            document.addEventListener('mouseup', function() {
+                isActive = false;
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isActive) return;
+                let x = e.pageX - container.getBoundingClientRect().left;
+                beforeAfterSlider(x);
+            });
+
+            // Soporte táctil
+            container.addEventListener('touchstart', function(e) {
+                isActive = true;
+            });
+
+            container.addEventListener('touchend', function() {
+                isActive = false;
+            });
+
+            container.addEventListener('touchmove', function(e) {
+                if (!isActive) return;
+                let x = e.touches[0].pageX - container.getBoundingClientRect().left;
+                beforeAfterSlider(x);
+                pauseEvents(e);
+            });
+
+            // Inicialización
+            beforeAfterSlider(container.offsetWidth * 0.5);
+        });
+    });
+  </script>
+
+</body>
+</html>
