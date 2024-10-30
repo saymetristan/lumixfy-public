@@ -35,9 +35,15 @@
     /* Estilos para el modal */
     .modal {
       display: none;
+      z-index: 9999;
     }
     .modal-active {
       display: flex;
+    }
+    
+    /* Asegurarse que el contenido del modal también tenga un z-index alto */
+    .modal > div {
+      z-index: 10000;
     }
     
     /* Estilos para TwentyTwenty */
@@ -503,7 +509,7 @@
     <div class="container mx-auto px-4 text-center">
       <p class="mb-4">Hecho con 💚 por Jorge Tristan</p>
       <p>Contacto:</p>
-      <p>Email: <a href="mailto:soporte@lumixfy.com" class="text-primary hover:underline">soporte@lumixfy.com</a></p>
+      <p>Email: <a href="mailto:info@lumixfy.com" class="text-primary hover:underline">info@lumixfy.com</a></p>
     </div>
   </footer>
 
