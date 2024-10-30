@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-lang-es="Lumixfy - Imágenes Profesionales para Impresionar a tus Clientes" data-lang-en="Lumixfy - Professional Images to Impress Your Clients">
+  <title>Lumixfy - Imágenes Profesionales para Impresionar a tus Clientes</title>
   
   <!-- Tailwind CSS desde CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,14 +16,14 @@
         extend: {
           colors: {
             primary: {
-              light: '#4F46E5',
-              DEFAULT: '#3730A3',
-              dark: '#312E81',
+              light: '#A855F7',
+              DEFAULT: '#8B5CF6',
+              dark: '#7C3AED',
             },
             secondary: {
-              light: '#06B6D4',
-              DEFAULT: '#0891B2',
-              dark: '#155E75',
+              light: '#EC4899',
+              DEFAULT: '#DB2777',
+              dark: '#BE185D',
             },
           },
         },
@@ -94,19 +94,12 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: #3730A3;
-      border: 3px solid #0891B2;
+      background: #8B5CF6;
+      border: 3px solid #fff;
       transform: translate(-50%, -50%);
       cursor: ew-resize;
       box-shadow: 0 0 12px rgba(51, 51, 51, 0.5);
     }
-
-    /* Actualizar gradientes */
-    .from-purple-100 { --tw-gradient-from: #EEF2FF; }
-    .to-pink-100 { --tw-gradient-to: #CFFAFE; }
-
-    .dark .dark:from-gray-900 { --tw-gradient-from: #1E1B4B; }
-    .dark .dark:to-purple-900 { --tw-gradient-to: #164E63; }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 dark:from-gray-900 dark:to-purple-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
@@ -532,14 +525,6 @@
 
     function setLanguage(lang) {
       const elements = document.querySelectorAll('[data-lang-es]');
-      
-      // Actualizar el título de la página
-      const title = document.querySelector('title');
-      if (title) {
-        title.textContent = lang === 'es' ? 
-          title.getAttribute('data-lang-es') : 
-          title.getAttribute('data-lang-en');
-      }
 
       elements.forEach(element => {
         if (lang === 'es') {
