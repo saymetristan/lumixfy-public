@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lumixfy Landing Page</title>
+  <title data-lang-es="Lumixfy - Imágenes Profesionales para Impresionar a tus Clientes" data-lang-en="Lumixfy - Professional Images to Impress Your Clients">
   
   <!-- Tailwind CSS desde CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,14 +16,14 @@
         extend: {
           colors: {
             primary: {
-              light: '#A855F7',
-              DEFAULT: '#8B5CF6',
-              dark: '#7C3AED',
+              light: '#4F46E5',
+              DEFAULT: '#3730A3',
+              dark: '#312E81',
             },
             secondary: {
-              light: '#EC4899',
-              DEFAULT: '#DB2777',
-              dark: '#BE185D',
+              light: '#06B6D4',
+              DEFAULT: '#0891B2',
+              dark: '#155E75',
             },
           },
         },
@@ -94,12 +94,19 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: #8B5CF6;
-      border: 3px solid #fff;
+      background: #3730A3;
+      border: 3px solid #0891B2;
       transform: translate(-50%, -50%);
       cursor: ew-resize;
       box-shadow: 0 0 12px rgba(51, 51, 51, 0.5);
     }
+
+    /* Actualizar gradientes */
+    .from-purple-100 { --tw-gradient-from: #EEF2FF; }
+    .to-pink-100 { --tw-gradient-to: #CFFAFE; }
+
+    .dark .dark:from-gray-900 { --tw-gradient-from: #1E1B4B; }
+    .dark .dark:to-purple-900 { --tw-gradient-to: #164E63; }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 dark:from-gray-900 dark:to-purple-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
@@ -124,7 +131,7 @@
           <button id="theme-toggle" aria-label="Cambiar Tema" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none">
             <svg id="theme-icon" class="h-5 w-5 text-gray-800 dark:text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <!-- Icono predeterminado (sol) -->
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 5a7 7 0 000 14 7 7 0 000-14z" />
+              <path id="theme-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 5a7 7 0 000 14 7 7 0 000-14z" />
             </svg>
           </button>
         </li>
@@ -137,36 +144,37 @@
 
     <!-- Sección Hero -->
     <section class="text-center space-y-6">
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Transforma tus Imágenes con Iluminación Profesional y Fondos Personalizados en Segundos" data-lang-en="Transform Your Images with Professional Lighting and Custom Backgrounds in Seconds">
-        Transforma tus Imágenes con Iluminación Profesional y Fondos Personalizados en Segundos
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Imágenes Profesionales para Impresionar a tus Clientes" data-lang-en="Professional Images to Impress Your Clients">
+        Imágenes Profesionales para Impresionar a tus Clientes
       </h1>
-      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-es="Lumixfy utiliza inteligencia artificial avanzada para cambiar automáticamente la iluminación y el fondo de tus fotos, garantizando resultados realistas y de alta calidad." data-lang-en="Lumixfy uses advanced artificial intelligence to automatically change the lighting and background of your photos, ensuring realistic and high-quality results.">
-        Lumixfy utiliza inteligencia artificial avanzada para cambiar automáticamente la iluminación y el fondo de tus fotos, garantizando resultados realistas y de alta calidad.
+      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-es="Obtén imágenes de alta calidad que realzan tus productos y servicios, creando una impresión duradera en tus clientes. Con Lumixfy, tus fotografías destacarán en cualquier plataforma." data-lang-en="Get high-quality images that enhance your products and services, creating a lasting impression on your clients. With Lumixfy, your photos will stand out on any platform.">
+        Obtén imágenes de alta calidad que realzan tus productos y servicios, creando una impresión duradera en tus clientes. Con Lumixfy, tus fotografías destacarán en cualquier plataforma.
       </p>
       <div class="flex justify-center flex-wrap gap-4">
-        <button class="openModal bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Regístrate Gratis Ahora" data-lang-en="Register for Free Now">
-          Regístrate Gratis Ahora
+        <button class="openModal bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Solicita información" data-lang-en="Request information">
+          Solicita información
         </button>
-        <button class="openModal bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Pre-registrate Ahora" data-lang-en="Pre-register Now">
-          Pre-registrate Ahora
-        </button>
-      </div>
-      <div class="mt-12 relative">
-        <!-- Sección de Antes y Después -->
-        <div class="twentytwenty-container aspect-square max-w-3xl mx-auto">
-          <img src="despues.webp" alt="Después de usar Lumixfy" class="w-full h-full object-cover" />
-          <img src="antes.webp" alt="Antes de usar Lumixfy" class="w-full h-full object-cover" />
-        </div>
       </div>
     </section>
 
-    <!-- Sección de Características -->
+    <!-- Primer Slider Comparativo: Tequila de Lujo -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+        Transforma la Presentación de tus Productos
+      </h2>
+      <div class="twentytwenty-container aspect-video max-w-3xl mx-auto mb-12">
+        <img src="tequila-antes.webp" alt="Antes de usar Lumixfy - Tequila de Lujo" class="w-full h-full object-cover" />
+        <img src="tequila-despues.webp" alt="Después de usar Lumixfy - Tequila de Lujo" class="w-full h-full object-cover" />
+      </div>
+    </section>
+
+    <!-- Sección de Beneficios -->
     <section>
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="¿Por Qué Elegir Lumixfy?" data-lang-en="Why Choose Lumixfy?">
         ¿Por Qué Elegir Lumixfy?
       </h2>
       <div class="grid md:grid-cols-2 gap-8">
-        <!-- Característica 1 -->
+        <!-- Beneficio 1 -->
         <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div class="p-6 flex items-start space-x-4">
             <!-- Icono Cámara -->
@@ -176,14 +184,14 @@
               <circle cx="12" cy="13" r="4" />
             </svg>
             <div>
-              <h3 class="text-xl font-semibold mb-2" data-lang-es="Automatización Inteligente" data-lang-en="Intelligent Automation">Automatización Inteligente</h3>
-              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Ahorra tiempo y esfuerzo con nuestra IA que ajusta automáticamente la iluminación y cambia el fondo de tus fotos." data-lang-en="Save time and effort with our AI that automatically adjusts lighting and changes the background of your photos.">
-                Ahorra tiempo y esfuerzo con nuestra IA que ajusta automáticamente la iluminación y cambia el fondo de tus fotos.
+              <h3 class="text-xl font-semibold mb-2" data-lang-es="Imágenes que Capturan la Atención" data-lang-en="Images that Capture Attention">Imágenes que Capturan la Atención</h3>
+              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Atrae a tus clientes con fotografías profesionales que destacan tus productos y servicios en cualquier medio." data-lang-en="Attract your clients with professional photos that highlight your products and services on any medium.">
+                Atrae a tus clientes con fotografías profesionales que destacan tus productos y servicios en cualquier medio.
               </p>
             </div>
           </div>
         </div>
-        <!-- Característica 2 -->
+        <!-- Beneficio 2 -->
         <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div class="p-6 flex items-start space-x-4">
             <!-- Icono Pincel -->
@@ -193,14 +201,14 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h.01" />
             </svg>
             <div>
-              <h3 class="text-xl font-semibold mb-2" data-lang-es="Calidad Profesional" data-lang-en="Professional Quality">Calidad Profesional</h3>
-              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Obtén imágenes de alta calidad que mantienen la integridad fotográfica, ideales para cualquier propósito." data-lang-en="Get high-quality images that maintain photographic integrity, ideal for any purpose.">
-                Obtén imágenes de alta calidad que mantienen la integridad fotográfica, ideales para cualquier propósito.
+              <h3 class="text-xl font-semibold mb-2" data-lang-es="Personalización Total" data-lang-en="Total Customization">Personalización Total</h3>
+              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Define el entorno de iluminación y el fondo que deseas para cada imagen, garantizando una integración perfecta y profesional." data-lang-en="Define the lighting environment and background you want for each image, ensuring a seamless and professional integration.">
+                Define el entorno de iluminación y el fondo que deseas para cada imagen, garantizando una integración perfecta y profesional.
               </p>
             </div>
           </div>
         </div>
-        <!-- Característica 3 -->
+        <!-- Beneficio 3 -->
         <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div class="p-6 flex items-start space-x-4">
             <!-- Icono Varita Mágica -->
@@ -209,14 +217,14 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 16M9 4l7 7-7 7" />
             </svg>
             <div>
-              <h3 class="text-xl font-semibold mb-2" data-lang-es="Flexibilidad Total" data-lang-en="Total Flexibility">Flexibilidad Total</h3>
-              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Personaliza tus imágenes eligiendo entre fondos generados automáticamente o subiendo los tuyos propios." data-lang-en="Customize your images by choosing from automatically generated backgrounds or uploading your own.">
-                Personaliza tus imágenes eligiendo entre fondos generados automáticamente o subiendo los tuyos propios.
+              <h3 class="text-xl font-semibold mb-2" data-lang-es="Resultados Rápidos y Confiables" data-lang-en="Fast and Reliable Results">Resultados Rápidos y Confiables</h3>
+              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Recibe tus imágenes mejoradas en un plazo de 2 días, asegurando rapidez y eficiencia para tus proyectos." data-lang-en="Receive your enhanced images within 2 days, ensuring speed and efficiency for your projects.">
+                Recibe tus imágenes mejoradas en un plazo de 2 días, asegurando rapidez y eficiencia para tus proyectos.
               </p>
             </div>
           </div>
         </div>
-        <!-- Característica 4 -->
+        <!-- Beneficio 4 -->
         <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div class="p-6 flex items-start space-x-4">
             <!-- Icono Capas -->
@@ -227,9 +235,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l8 4 8-4" />
             </svg>
             <div>
-              <h3 class="text-xl font-semibold mb-2" data-lang-es="Asequible y Accesible" data-lang-en="Affordable and Accessible">Asequible y Accesible</h3>
-              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Empieza gratis con 5 imágenes y accede a planes premium por solo $10 USD al mes para necesidades más extensas." data-lang-en="Start free with 5 images and access premium plans for only $10 USD per month for more extensive needs.">
-                Empieza gratis con 5 imágenes y accede a planes premium por solo $10 USD al mes para necesidades más extensas.
+              <h3 class="text-xl font-semibold mb-2" data-lang-es="Calidad Superior en Cada Imagen" data-lang-en="Superior Quality in Every Image">Calidad Superior en Cada Imagen</h3>
+              <p class="text-gray-600 dark:text-gray-300" data-lang-es="Garantizamos imágenes de alta resolución que mantienen la integridad fotográfica, perfectas para cualquier uso." data-lang-en="We guarantee high-resolution images that maintain photographic integrity, perfect for any use.">
+                Garantizamos imágenes de alta resolución que mantienen la integridad fotográfica, perfectas para cualquier uso.
               </p>
             </div>
           </div>
@@ -237,48 +245,25 @@
       </div>
     </section>
 
-    <!-- Sección de Características Destacadas -->
-    <section class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 opacity-50"></div>
-      <div class="relative z-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Características Destacadas de Lumixfy" data-lang-en="Highlighted Features of Lumixfy">
-          Características Destacadas de Lumixfy
-        </h2>
-        <div class="space-y-6">
-          <div class="flex items-start space-x-4">
-            <div class="bg-gradient-to-r from-primary to-secondary rounded-full p-2">
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <!-- SVG del icono ChevronRight -->
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-            <p class="flex-1 text-lg" data-lang-es="Describe el tipo de iluminación que deseas, como 'luz de día' o 'ambiente nocturno', y nuestra IA ajusta automáticamente el brillo y el estilo de iluminación." data-lang-en="Describe the type of lighting you want, such as 'daylight' or 'nighttime ambiance', and our AI automatically adjusts the brightness and lighting style.">
-              Describe el tipo de iluminación que deseas, como "luz de día" o "ambiente nocturno", y nuestra IA ajusta automáticamente el brillo y el estilo de iluminación.
-            </p>
-          </div>
-          <div class="flex items-start space-x-4">
-            <div class="bg-gradient-to-r from-primary to-secondary rounded-full p-2">
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <!-- SVG del icono ChevronRight -->
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-            <p class="flex-1 text-lg" data-lang-es="Genera fondos personalizados automáticamente que armonizan con tu imagen principal, creando composiciones realistas y atractivas." data-lang-en="Automatically generate custom backgrounds that harmonize with your main image, creating realistic and attractive compositions.">
-              Genera fondos personalizados automáticamente que armonizan con tu imagen principal, creando composiciones realistas y atractivas.
-            </p>
-          </div>
-          <div class="flex items-start space-x-4">
-            <div class="bg-gradient-to-r from-primary to-secondary rounded-full p-2">
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <!-- SVG del icono ChevronRight -->
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-            <p class="flex-1 text-lg" data-lang-es="Sube tu propio fondo y deja que Lumixfy adapte la iluminación y la imagen principal para una integración perfecta." data-lang-en="Upload your own background and let Lumixfy adapt the lighting and main image for a seamless integration.">
-              Sube tu propio fondo y deja que Lumixfy adapte la iluminación y la imagen principal para una integración perfecta.
-            </p>
-          </div>
-        </div>
+    <!-- Segundo Slider Comparativo: Pareja de Novios -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+        Captura Momentos Inolvidables
+      </h2>
+      <div class="twentytwenty-container aspect-video max-w-3xl mx-auto mb-12">
+        <img src="novios-antes.webp" alt="Antes de usar Lumixfy - Pareja de Novios" class="w-full h-full object-cover" />
+        <img src="novios-despues.webp" alt="Después de usar Lumixfy - Pareja de Novios" class="w-full h-full object-cover" />
+      </div>
+    </section>
+
+    <!-- Tercer Slider Comparativo: Bicicleta -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Optimiza tus Productos para Ventas" data-lang-en="Optimize Your Products for Sales">
+        Optimiza tus Productos para Ventas
+      </h2>
+      <div class="twentytwenty-container aspect-video max-w-3xl mx-auto mb-12">
+        <img src="bicicleta-antes.webp" alt="Antes de usar Lumixfy - Bicicleta" class="w-full h-full object-cover" />
+        <img src="bicicleta-despues.webp" alt="Después de usar Lumixfy - Bicicleta" class="w-full h-full object-cover" />
       </div>
     </section>
 
@@ -291,27 +276,22 @@
         <!-- Paso 1 -->
         <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
           <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">1.</span>
-          <span class="text-lg" data-lang-es="Sube tu Imagen" data-lang-en="Upload Your Image">Sube tu Imagen</span>
+          <span class="text-lg" data-lang-es="Pre-registrate y adquiere tu paquete" data-lang-en="Pre-register and purchase your package">Pre-registrate y adquiere tu paquete</span>
         </div>
         <!-- Paso 2 -->
         <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
           <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">2.</span>
-          <span class="text-lg" data-lang-es="Elige tu Fondo" data-lang-en="Choose Your Background">Elige tu Fondo</span>
+          <span class="text-lg" data-lang-es="Especifica tus preferencias de iluminación y fondo" data-lang-en="Specify your lighting and background preferences">Especifica tus preferencias de iluminación y fondo</span>
         </div>
         <!-- Paso 3 -->
         <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
           <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">3.</span>
-          <span class="text-lg" data-lang-es="Ajusta la Iluminación" data-lang-en="Adjust the Lighting">Ajusta la Iluminación</span>
+          <span class="text-lg" data-lang-es="Nuestro equipo mejora tus imágenes según tus especificaciones" data-lang-en="Our team enhances your images according to your specifications">Nuestro equipo mejora tus imágenes según tus especificaciones</span>
         </div>
         <!-- Paso 4 -->
         <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
           <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">4.</span>
-          <span class="text-lg" data-lang-es="Obtén tu Imagen Transformada" data-lang-en="Get Your Transformed Image">Obtén tu Imagen Transformada</span>
-        </div>
-        <!-- Paso 5 -->
-        <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg transform transition-transform hover:scale-105">
-          <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">5.</span>
-          <span class="text-lg" data-lang-es="Guarda y Comparte" data-lang-en="Save and Share">Guarda y Comparte</span>
+          <span class="text-lg" data-lang-es="Recibe tus imágenes mejoradas en 2 días" data-lang-en="Receive your enhanced images in 2 days">Recibe tus imágenes mejoradas en 2 días</span>
         </div>
       </div>
     </section>
@@ -358,8 +338,8 @@
         <!-- Testimonio 1 -->
         <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div class="p-6 space-y-4">
-            <p class="italic text-lg" data-lang-es="“Lumixfy ha revolucionado la manera en que presento mis productos en línea. Las imágenes lucen profesionales y realmente atraen a más clientes.”" data-lang-en="“Lumixfy has revolutionized the way I present my products online. The images look professional and truly attract more customers.”">
-              “Lumixfy ha revolucionado la manera en que presento mis productos en línea. Las imágenes lucen profesionales y realmente atraen a más clientes.”
+            <p class="italic text-lg" data-lang-es="“Lumixfy ha transformado la manera en que presento mis productos. Las imágenes mejoradas son profesionales y atraen a más clientes.”" data-lang-en="“Lumixfy has transformed the way I present my products. The enhanced images are professional and attract more customers.”">
+              “Lumixfy ha transformado la manera en que presento mis productos. Las imágenes mejoradas son profesionales y atraen a más clientes.”
             </p>
             <p class="font-semibold text-right text-primary dark:text-secondary" data-lang-es="- María G. – Emprendedora" data-lang-en="- María G. – Entrepreneur">
               - María G. – Emprendedora
@@ -369,8 +349,8 @@
         <!-- Testimonio 2 -->
         <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div class="p-6 space-y-4">
-            <p class="italic text-lg" data-lang-es="“La automatización de Lumixfy me ahorra horas de trabajo en edición. Los resultados son impresionantes y consistentes.”" data-lang-en="“Lumixfy's automation saves me hours of editing work. The results are impressive and consistent.”">
-              “La automatización de Lumixfy me ahorra horas de trabajo en edición. Los resultados son impresionantes y consistentes.”
+            <p class="italic text-lg" data-lang-es="“El servicio de Lumixfy me permite obtener imágenes de alta calidad rápidamente. Es una herramienta esencial para mi negocio.”" data-lang-en="“Lumixfy's service allows me to obtain high-quality images quickly. It's an essential tool for my business.”">
+              “El servicio de Lumixfy me permite obtener imágenes de alta calidad rápidamente. Es una herramienta esencial para mi negocio.”
             </p>
             <p class="font-semibold text-right text-primary dark:text-secondary" data-lang-es="- Carlos M. – Fotógrafo Profesional" data-lang-en="- Carlos M. – Professional Photographer">
               - Carlos M. – Fotógrafo Profesional
@@ -380,8 +360,8 @@
         <!-- Testimonio 3 -->
         <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div class="p-6 space-y-4">
-            <p class="italic text-lg" data-lang-es="“Puedo crear contenido visual atractivo para mis redes sociales en minutos. Lumixfy es una herramienta indispensable para mi trabajo diario.”" data-lang-en="“I can create attractive visual content for my social media in minutes. Lumixfy is an indispensable tool for my daily work.”">
-              “Puedo crear contenido visual atractivo para mis redes sociales en minutos. Lumixfy es una herramienta indispensable para mi trabajo diario.”
+            <p class="italic text-lg" data-lang-es="“Lumixfy ha mejorado la calidad visual de mis redes sociales. Las imágenes lucen increíbles y profesionales.”" data-lang-en="“Lumixfy has improved the visual quality of my social media. The images look amazing and professional.”">
+              “Lumixfy ha mejorado la calidad visual de mis redes sociales. Las imágenes lucen increíbles y profesionales.”
             </p>
             <p class="font-semibold text-right text-primary dark:text-secondary" data-lang-es="- Ana L. – Creadora de Contenido" data-lang-en="- Ana L. – Content Creator">
               - Ana L. – Creadora de Contenido
@@ -391,8 +371,8 @@
         <!-- Testimonio 4 -->
         <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div class="p-6 space-y-4">
-            <p class="italic text-lg" data-lang-es="“Desde que uso Lumixfy, la calidad de las fotos de mis productos ha mejorado significativamente. Mis ventas han aumentado gracias a las mejores imágenes.”" data-lang-en="“Since I started using Lumixfy, the quality of my product photos has significantly improved. My sales have increased thanks to better images.”">
-              “Desde que uso Lumixfy, la calidad de las fotos de mis productos ha mejorado significativamente. Mis ventas han aumentado gracias a las mejores imágenes.”
+            <p class="italic text-lg" data-lang-es="“Desde que uso Lumixfy, la presentación de mis productos ha mejorado notablemente. Mis ventas han aumentado gracias a las mejores imágenes.”" data-lang-en="“Since I started using Lumixfy, the presentation of my products has noticeably improved. My sales have increased thanks to better images.”">
+              “Desde que uso Lumixfy, la presentación de mis productos ha mejorado notablemente. Mis ventas han aumentado gracias a las mejores imágenes.”
             </p>
             <p class="font-semibold text-right text-primary dark:text-secondary" data-lang-es="- Juan P. – Dueño de Tienda Online" data-lang-en="- Juan P. – Online Store Owner">
               - Juan P. – Dueño de Tienda Online
@@ -404,80 +384,16 @@
 
     <!-- Sección de Precios -->
     <section>
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Planes de Precios" data-lang-en="Pricing Plans">
-        Planes de Precios
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Oferta Especial" data-lang-en="Special Offer">
+        Oferta Especial
       </h2>
-      <p class="text-center mb-12 text-lg md:text-xl" data-lang-es="Prueba gratis con 5 imágenes y elige el plan que mejor se adapte a tus necesidades." data-lang-en="Try for free with 5 images and choose the plan that best suits your needs.">
-        Prueba gratis con 5 imágenes y elige el plan que mejor se adapte a tus necesidades.
+      <p class="text-center mb-12 text-lg md:text-xl" data-lang-es="Adquiere 100 imágenes por solo $20 USD con un tiempo de procesamiento de 2 días. Además, prueba 5 imágenes de muestra con respuesta en hasta 6 horas para asegurarte de que cumplen con tus expectativas." data-lang-en="Purchase 100 images for only $20 USD with a 2-day processing time. Additionally, try 5 sample images with up to 6-hour response time to ensure they meet your expectations.">
+        Adquiere 100 imágenes por solo $20 USD con un tiempo de procesamiento de 2 días. Además, prueba 5 imágenes de muestra con respuesta en hasta 6 horas para asegurarte de que cumplen con tus expectativas.
       </p>
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Plan Gratuito -->
-        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-          <div class="p-6 space-y-4">
-            <h3 class="text-2xl font-bold" data-lang-es="Plan Gratuito" data-lang-en="Free Plan">Plan Gratuito</h3>
-            <p class="text-4xl font-bold text-primary dark:text-secondary" data-lang-es="Gratis" data-lang-en="Free">Gratis</p>
-            <ul class="space-y-2">
-              <li class="flex items-center space-x-2">
-                <!-- Icono Check -->
-                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <!-- SVG del icono Check -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-lang-es="Genera hasta 5 imágenes" data-lang-en="Generate up to 5 images">Genera hasta 5 imágenes</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <!-- SVG del icono Check -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-lang-es="Acceso a fondos generados automáticamente" data-lang-en="Access to automatically generated backgrounds">Acceso a fondos generados automáticamente</span>
-              </li>
-            </ul>
-            <button class="openModal w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Regístrate Gratis Ahora" data-lang-en="Register for Free Now">
-              Regístrate Gratis Ahora
-            </button>
-          </div>
-        </div>
-        <!-- Plan Premium -->
-        <div class="overflow-hidden transform transition-transform hover:scale-105 bg-white dark:bg-gray-800 rounded-lg shadow-lg border-2 border-primary">
-          <div class="p-6 space-y-4">
-            <h3 class="text-2xl font-bold" data-lang-es="Plan Premium" data-lang-en="Premium Plan">Plan Premium</h3>
-            <p class="text-4xl font-bold text-primary dark:text-secondary" data-lang-es="$10 USD/mes" data-lang-en="$10 USD/month">$10 USD/mes</p>
-            <ul class="space-y-2">
-              <li class="flex items-center space-x-2">
-                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <!-- SVG del icono Check -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-lang-es="Genera hasta 60 imágenes" data-lang-en="Generate up to 60 images">Genera hasta 60 imágenes</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <!-- SVG del icono Check -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-lang-es="Acceso a fondos personalizados y generados automáticamente" data-lang-en="Access to custom and automatically generated backgrounds">Acceso a fondos personalizados y generados automáticamente</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <!-- SVG del icono Check -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-lang-es="Soporte prioritario" data-lang-en="Priority Support">Soporte prioritario</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <!-- SVG del icono Check -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-lang-es="Actualizaciones y nuevas funcionalidades exclusivas" data-lang-en="Exclusive updates and new features">Actualizaciones y nuevas funcionalidades exclusivas</span>
-              </li>
-            </ul>
-            <button class="openModal w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Regístrate Ahora" data-lang-en="Register Now">
-              Regístrate Ahora
-            </button>
-          </div>
-        </div>
+      <div class="flex justify-center">
+        <button class="openModal bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Solicita información" data-lang-en="Request information">
+          Solicita información
+        </button>
       </div>
     </section>
 
@@ -485,18 +401,15 @@
     <section class="text-center space-y-6 bg-white dark:bg-gray-800 rounded-xl p-12 shadow-2xl relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 opacity-50"></div>
       <div class="relative z-10">
-        <h2 class="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Empieza a Transformar tus Imágenes Hoy Mismo" data-lang-en="Start Transforming Your Images Today">
-          Empieza a Transformar tus Imágenes Hoy Mismo
+        <h2 class="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" data-lang-es="Empieza a Mejorar tus Imágenes Hoy Mismo" data-lang-en="Start Enhancing Your Images Today">
+          Empieza a Mejorar tus Imágenes Hoy Mismo
         </h2>
-        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-es="Únete a cientos de usuarios satisfechos que ya están mejorando sus imágenes con Lumixfy. Prueba gratis ahora y descubre el poder de la inteligencia artificial en la edición de fotos." data-lang-en="Join hundreds of satisfied users who are already enhancing their images with Lumixfy. Try it for free now and discover the power of artificial intelligence in photo editing.">
-          Únete a cientos de usuarios satisfechos que ya están mejorando sus imágenes con Lumixfy. Prueba gratis ahora y descubre el poder de la inteligencia artificial en la edición de fotos.
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-es="Únete a cientos de usuarios satisfechos que ya están mejorando sus imágenes con Lumixfy. Pre-regístrate ahora y asegura tu paquete de 100 imágenes." data-lang-en="Join hundreds of satisfied users who are already enhancing their images with Lumixfy. Request information and secure your package of 100 images.">
+          Únete a cientos de usuarios satisfechos que ya están mejorando sus imágenes con Lumixfy. Pre-regístrate ahora y asegura tu paquete de 100 imágenes.
         </p>
         <div class="flex justify-center flex-wrap gap-4 mt-8">
-          <button class="openModal bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Regístrate Gratis Ahora" data-lang-en="Register for Free Now">
-            Regístrate Gratis Ahora
-          </button>
-          <button class="openModal bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Pre-registrate Ahora" data-lang-en="Pre-register Now">
-            Pre-registrate Ahora
+          <button class="openModal bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105" data-lang-es="Solicita información" data-lang-en="Request information">
+            Solicita información
           </button>
         </div>
       </div>
@@ -507,9 +420,7 @@
   <!-- Footer -->
   <footer class="bg-gray-100 dark:bg-gray-900 py-8">
     <div class="container mx-auto px-4 text-center">
-      <p class="mb-4">Hecho con 💚 por Jorge Tristan</p>
-      <p>Contacto:</p>
-      <p>Email: <a href="mailto:info@lumixfy.com" class="text-primary hover:underline">info@lumixfy.com</a></p>
+      <a href="mailto:info@lumixfy.com" class="text-primary hover:underline">info@lumixfy.com</a>
     </div>
   </footer>
 
@@ -522,8 +433,8 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-      <h2 class="text-2xl font-bold mb-4 text-center" data-lang-es="Pre-Registro en Lumixfy" data-lang-en="Lumixfy Pre-Registration">Pre-Registro en Lumixfy</h2>
-      <form id="preRegisterForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST" class="space-y-4">
+      <h2 class="text-2xl font-bold mb-4 text-center" data-lang-es="Mas información" data-lang-en="More information">Mas información</h2>
+      <form id="preRegisterForm" action="https://formspree.io/f/xvgozlbq" method="POST" class="space-y-4">
         <div>
           <label for="email" class="block text-sm font-medium mb-1" data-lang-es="Correo Electrónico" data-lang-en="Email Address">Correo Electrónico</label>
           <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" data-lang-placeholder-es="Introduce tu correo" data-lang-placeholder-en="Enter your email" placeholder="Introduce tu correo">
@@ -534,8 +445,8 @@
           </button>
         </div>
       </form>
-      <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 text-center" data-lang-es="Recibirás una confirmación en tu correo." data-lang-en="You will receive a confirmation in your email.">
-        Recibirás una confirmación en tu correo.
+      <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 text-center" data-lang-es="Recibirás una confirmación en tu correo y más información sobre cómo proceder." data-lang-en="You will receive a confirmation in your email and more information on how to proceed.">
+        Recibirás una confirmación en tu correo y más información sobre cómo proceder.
       </p>
     </div>
   </div>
@@ -621,6 +532,14 @@
 
     function setLanguage(lang) {
       const elements = document.querySelectorAll('[data-lang-es]');
+      
+      // Actualizar el título de la página
+      const title = document.querySelector('title');
+      if (title) {
+        title.textContent = lang === 'es' ? 
+          title.getAttribute('data-lang-es') : 
+          title.getAttribute('data-lang-en');
+      }
 
       elements.forEach(element => {
         if (lang === 'es') {
